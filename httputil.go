@@ -5,6 +5,15 @@ import (
 	"strings"
 )
 
+func JoinHostAndPort(host, port string) string {
+	host = strings.TrimRight(host, ":")
+	port = strings.TrimLeft(port, ":")
+	if port == "" {
+		return host
+	}
+	return host + ":" + port
+}
+
 func StripPort(s string) string {
 	idx := strings.LastIndex(s, ":")
 	if idx == -1 {
